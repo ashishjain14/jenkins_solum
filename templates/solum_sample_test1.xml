@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description>This job runs a test inside a docker container</description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <hudson.model.StringParameterDefinition>
+          <name>docker_image_name_with_registry</name>
+          <description></description>
+          <defaultValue></defaultValue>
+        </hudson.model.StringParameterDefinition>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
+  </properties>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>sudo docker run $docker_image_name_with_registry /bin/bash unit_tests.sh</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers>
+    <hudson.plugins.parameterizedtrigger.BuildTrigger plugin="parameterized-trigger@2.30">
+      <configs>
+        <hudson.plugins.parameterizedtrigger.BuildTriggerConfig>
+          <configs>
+            <hudson.plugins.parameterizedtrigger.PredefinedBuildParameters>
+              <properties>docker_image_name_with_registry=$docker_image_name_with_registry
+image_tag=$image_tag
+filename=$filename
+OS_TENANT_NAME=$OS_TENANT_NAME
+OS_USER_NAME=$OS_USER_NAME
+OS_PASSWORD=$OS_PASSWORD
+OS_AUTH_URL=$OS_AUTH_URL
+OS_REGION_NAME=$OS_REGION_NAME
+OS_IDENTITY_API_VERSION=$OS_IDENTITY_API_VERSION
+OS_IMAGE_API_VERSION=$OS_IMAGE_API_VERSION
+glance_image_name=$glance_image_name</properties>
+            </hudson.plugins.parameterizedtrigger.PredefinedBuildParameters>
+          </configs>
+          <projects>save_image1, </projects>
+          <condition>SUCCESS</condition>
+          <triggerWithNoParameters>false</triggerWithNoParameters>
+        </hudson.plugins.parameterizedtrigger.BuildTriggerConfig>
+      </configs>
+    </hudson.plugins.parameterizedtrigger.BuildTrigger>
+  </publishers>
+  <buildWrappers>
+    <jenkins.plugins.logstash.LogstashBuildWrapper plugin="logstash@1.1.1"/>
+  </buildWrappers>
+</project>
