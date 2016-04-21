@@ -14,10 +14,11 @@
 
 import pika
 import json
-
+from pika import credentials
+creds = credentials.PlainCredentials("stackrabbit","solum")
 
 connection = pika.BlockingConnection(pika.ConnectionParameters(
-               'localhost'))
+               'localhost', credentials=creds))
 channel = connection.channel()
 channel.queue_declare(queue='logstash', durable=True)
 

@@ -36,16 +36,17 @@
 image_tag=$image_tag
 filename=$filename
 OS_TENANT_NAME=$OS_TENANT_NAME
-OS_USER_NAME=$OS_USER_NAME
+OS_USERNAME=$OS_USERNAME
 OS_PASSWORD=$OS_PASSWORD
 OS_AUTH_URL=$OS_AUTH_URL
 OS_REGION_NAME=$OS_REGION_NAME
 OS_IDENTITY_API_VERSION=$OS_IDENTITY_API_VERSION
 OS_IMAGE_API_VERSION=$OS_IMAGE_API_VERSION
+app_file=$app_file
 glance_image_name=$glance_image_name</properties>
             </hudson.plugins.parameterizedtrigger.PredefinedBuildParameters>
           </configs>
-          <projects>save_image1, </projects>
+          <projects>save_image </projects>
           <condition>SUCCESS</condition>
           <triggerWithNoParameters>false</triggerWithNoParameters>
         </hudson.plugins.parameterizedtrigger.BuildTriggerConfig>

@@ -12,7 +12,7 @@
           <defaultValue></defaultValue>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
-          <name>OS_USER_NAME</name>
+          <name>OS_USERNAME</name>
           <description></description>
           <defaultValue></defaultValue>
         </hudson.model.StringParameterDefinition>
@@ -83,7 +83,7 @@
     </org.jenkinsci.plugins.dockerbuildstep.DockerBuilder>
     <hudson.tasks.Shell>
       <command>export OS_TENANT_NAME=$OS_TENANT_NAME
-export OS_USER_NAME=$OS_USER_NAME
+export OS_USERNAME=$OS_USERNAME
 export OS_PASSWORD=$OS_PASSWORD
 export OS_AUTH_URL=$OS_AUTH_URL
 export OS_REGION_NAME=$OS_REGION_NAME
@@ -104,17 +104,18 @@ echo du_id=$i &gt; ${JENKINS_HOME}/du_id.properties</command>
 image_tag=$image_tag
 filename=$filename
 OS_TENANT_NAME=$OS_TENANT_NAME
-OS_USER_NAME=$OS_USER_NAME
+OS_USERNAME=$OS_USERNAME
 OS_PASSWORD=$OS_PASSWORD
 OS_AUTH_URL=$OS_AUTH_URL
 OS_REGION_NAME=$OS_REGION_NAME
 OS_IDENTITY_API_VERSION=$OS_IDENTITY_API_VERSION
 OS_IMAGE_API_VERSION=$OS_IMAGE_API_VERSION
 glance_image_name=$glance_image_name
+app_file=$app_file
 filename=$filename</properties>
             </hudson.plugins.parameterizedtrigger.PredefinedBuildParameters>
           </configs>
-          <projects>app_deploy1, </projects>
+          <projects>app_deploy, </projects>
           <condition>SUCCESS</condition>
           <triggerWithNoParameters>false</triggerWithNoParameters>
         </hudson.plugins.parameterizedtrigger.BuildTriggerConfig>

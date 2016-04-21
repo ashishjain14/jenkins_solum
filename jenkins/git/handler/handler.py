@@ -31,7 +31,7 @@ class ApiHandler():
 
     def create_pipeline(self, **kwargs):
         param_list=""
-        config_file = "/home/vagrant/jenkins_glue/etc/config/js.conf"
+        config_file = "/home/vagrant/jenkins_solum/etc/config/js.conf"
         config = ConfigParser.RawConfigParser()
         config.read(config_file)
         jenkins_template_dir = config.get("jenkins", "job_template_dir")

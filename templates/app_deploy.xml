@@ -12,7 +12,7 @@
           <defaultValue></defaultValue>
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
-          <name>OS_USER_NAME</name>
+          <name>OS_USERNAME</name>
           <description></description>
           <defaultValue></defaultValue>
         </hudson.model.StringParameterDefinition>
@@ -33,6 +33,11 @@
         </hudson.model.StringParameterDefinition>
         <hudson.model.StringParameterDefinition>
           <name>OS_IDENTITY_API_VERSION</name>
+          <description></description>
+          <defaultValue></defaultValue>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.StringParameterDefinition>
+          <name>app_file</name>
           <description></description>
           <defaultValue></defaultValue>
         </hudson.model.StringParameterDefinition>
@@ -58,14 +63,15 @@
       </info>
     </EnvInjectBuilder>
     <hudson.tasks.Shell>
-      <command>export OS_TENANT_NAME=demo
-export OS_USERNAME=demo
-export OS_PASSWORD=solum
-export OS_AUTH_URL=http://10.0.2.15:5000/v2.0
-export OS_REGION_NAME=RegionOne
-export OS_IDENTITY_API_VERSION=2.0
-export OS_IMAGE_API_VERSION=2
-# solum app deploy cherrypy --du-id $du_id  Commented this for now
+      <command>export OS_TENANT_NAME=$OS_TENANT_NAME
+export OS_USERNAME=$OS_USERNAME
+export OS_PASSWORD=$OS_PASSWORD
+export OS_AUTH_URL=$OS_AUTH_URL
+export OS_REGION_NAME=$OS_REGION_NAME
+export OS_IDENTITY_API_VERSION=$OS_IDENTITY_API_VERSION
+export OS_IMAGE_API_VERSION=$OS_IMAGE_API_VERSION
+solum app create --app-file $app_file --no-languagepack
+solum app deploy cherrypy --du-id $du_id
 echo $du_id</command>
     </hudson.tasks.Shell>
   </builders>
