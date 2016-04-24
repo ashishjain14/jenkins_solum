@@ -162,7 +162,7 @@ app_file=${WORKSPACE}/cherrypy.yaml
 glance_image_name=$glance_image_name</properties>
             </hudson.plugins.parameterizedtrigger.PredefinedBuildParameters>
           </configs>
-          <projects>solum_sample_test, </projects>
+          <projects>app_test, </projects>
           <condition>SUCCESS</condition>
           <triggerWithNoParameters>false</triggerWithNoParameters>
         </hudson.plugins.parameterizedtrigger.BuildTriggerConfig>
